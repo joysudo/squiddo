@@ -1,6 +1,7 @@
 <script lang="ts">
     import "../app.css";
     let zone: string = "Twilight";
+    let timer: `${number}:${number}` = "25:00";
 </script>
 
 <div class="tank-wrapper">
@@ -9,7 +10,14 @@
     <div class="sand"></div>
     <div class="tank-grid">
         <h1 class="mood">Squid name is feeling... <i>emotion</i>.</h1>
-        <div class="pomodoro"><h4>Pomodoro</h4></div>
+        <div class="pomodoro">
+            <h4>Pomodoro</h4>
+            <h3>{timer}</h3>
+            <div class="buttons">
+                <button>▷</button>
+                <button>↻</button>
+            </div>
+        </div>
         <div class="tasks"><h4>Tasks</h4></div>
         <div class="zone"><h3>{zone}<br/><u><i>Zone</i></u></h3></div>
         <div class="badges"><h4>Badges</h4></div>
@@ -52,6 +60,14 @@
         /* tank borders */
         --thick: min(3vw, 3vh);
         --len: min(7vw, 7vh);
+    }
+
+    button {
+        flex: 1;
+        border-radius: 10px;
+        padding: 2%;
+        border: transparent;
+        color: var(--navy);
     }
 
     .tank {
@@ -216,7 +232,54 @@
     .pomodoro { 
         grid-area: B; 
         background-color: color-mix(in srgb, var(--sand), transparent 30%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
+
+    .pomodoro h3 {
+        /* font-size: clamp(1.709rem, 1.181rem + 2.64vi, 2.969rem); */
+        /* font-size: clamp(2.671rem, 1.541rem + 5.65vi, 5.278rem); */
+        font-size: clamp(2.136rem, 1.37rem + 3.83vi, 3.959rem);
+        margin: 0 auto;
+        font-style: italic;
+    }
+
+    .pomodoro .buttons {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .pomodoro .buttons button {
+        background-color: color-mix(in srgb, var(--navy), transparent 93%);
+    }
+
+    .pomodoro .buttons button:first-child {
+        background-color: color-mix(in srgb, var(--cream), transparent 50%);
+        transition: filter 0.2s ease;
+    }
+
+    .pomodoro .buttons button:first-child:hover {
+        filter: brightness(0.9);
+    }
+
+    .pomodoro .buttons button:first-child:active {
+        filter: brightness(0.8);
+    }
+
+    .pomodoro .buttons button:last-child:hover {
+        transition: background-color 0.2s ease;
+    }
+
+    .pomodoro .buttons button:last-child:hover {
+        background-color: color-mix(in srgb, var(--navy), transparent 85%);
+    }
+
+    .pomodoro .buttons button:last-child:active {
+        background-color: color-mix(in srgb, var(--navy), transparent 80%);
+    }
+
 
     .tasks { 
         grid-area: C; 
