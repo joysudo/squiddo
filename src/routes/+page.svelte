@@ -1,5 +1,6 @@
 <script lang="ts">
     import "../app.css";
+    let zone: string = "Twilight";
 </script>
 
 <div class="tank-wrapper">
@@ -8,16 +9,15 @@
     <div class="sand"></div>
     <div class="tank-grid">
         <h1 class="mood">Squid name is feeling... <i>emotion</i>.</h1>
-        <div class="pomodoro">Pomodoro</div>
-        <div class="tasks">Tasks</div>
-        <div class="zone">Zone</div>
-        <div class="badges">Badges</div>
-        <div class="edit friend-settings">Edit friends</div>
-        <div class="edit squiddo-settings">Edit squiddo</div>
+        <div class="pomodoro"><h4>Pomodoro</h4></div>
+        <div class="tasks"><h4>Tasks</h4></div>
+        <div class="zone"><h3>{zone}<br/><u><i>Zone</i></u></h3></div>
+        <div class="badges"><h4>Badges</h4></div>
+        <div class="edit friend-settings"><h4>Edit friends</h4></div>
+        <div class="edit squiddo-settings"><h4>Edit squiddo</h4></div>
         <div class="squiddo">
             <div class="squiddo-wrapper">
                 <div class="text-bubble">jfdksjfsd dfds dsfsd dfsd dsf sdffsd</div>
-                <!-- <img src="/images/happy-squiddo.png" alt=""/> -->
                  <svg xmlns="http://www.w3.org/2000/svg" width="255" height="287" viewBox="0 0 255 287" fill="none">
                     <path d="M124.554 1.71631C145.054 7.71767 223.221 88.0515 252.554 124.718C255.554 133.218 236.054 140.885 220.554 143.718C245.555 190.718 222.555 248.718 203.555 252.218C226.555 270.718 203.555 281.718 194.554 261.217C205.054 289.718 171.555 282.218 169.054 261.217C171.555 297.718 147.055 281.718 145.054 262.717C134.055 301.218 115.555 278.218 117.054 262.717C103.054 300.717 82.5547 283.22 94.0547 264.718C71.5547 298.718 65.555 272.218 79.0547 261.217C62.055 275.071 46.5547 261.217 67.5544 253.717C17.1544 244.917 28.5543 181.717 40.5543 151.217C40.5543 151.217 9.05469 151.217 1.55435 143.716C-1.20691 140.955 102.069 -4.86636 124.554 1.71631Z" fill="url(#paint0_linear_602_337)"/>
                     <path d="M124.554 1.71631C145.054 7.71767 223.221 88.0515 252.554 124.718C255.554 133.218 236.054 140.885 220.554 143.718C245.555 190.718 222.555 248.718 203.555 252.218C226.555 270.718 203.555 281.718 194.554 261.217C205.054 289.718 171.555 282.218 169.054 261.217C171.555 297.718 147.055 281.718 145.054 262.717C134.055 301.218 115.555 278.218 117.054 262.717C103.054 300.717 82.5547 283.22 94.0547 264.718C71.5547 298.718 65.555 272.218 79.0547 261.217C62.055 275.071 46.5547 261.217 67.5544 253.717C17.1544 244.917 28.5543 181.717 40.5543 151.217C40.5543 151.217 9.05469 151.217 1.55435 143.716C-1.20691 140.955 102.069 -4.86636 124.554 1.71631Z" fill="#F8F5E9" fill-opacity="0.2"/>
@@ -26,8 +26,8 @@
                     <path d="M122.555 160.491C122.555 155.4 117.903 145.218 103.526 145.218C86.6118 145.218 85.5547 155.909 85.5547 159.473C85.5547 163.036 86.0833 173.218 104.055 173.218C118.432 173.218 122.555 164.564 122.555 160.491Z" fill="#DF8D99" fill-opacity="0.25"/>
                     <path d="M120.739 170.236C110.985 236.758 175.981 225.898 163.978 170.074C163.757 169.048 162.753 168.355 161.714 168.496C156.549 169.195 151.124 169.261 147.257 168.391C146.8 168.289 146.327 168.332 145.886 168.489C140.795 170.31 129.618 169.405 123.019 168.506C121.93 168.358 120.899 169.149 120.739 170.236Z" fill="#DF8D99" stroke="#0A3474" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
                     <!-- eyes (could add vector-effect="non-scaling-stroke") -->
-                    <path d="M156.822 145.95C155.846 144.974 154.263 144.974 153.287 145.95C152.311 146.927 152.311 148.51 153.287 149.486C154.263 150.462 155.846 150.462 156.822 149.486C157.799 148.51 157.799 146.927 156.822 145.95Z" fill="#0A3474" stroke="#0A3474" stroke-width="2.5" />
-                    <path d="M131.822 146.95C130.846 145.974 129.263 145.974 128.287 146.95C127.311 147.927 127.311 149.51 128.287 150.486C129.263 151.462 130.846 151.462 131.822 150.486C132.799 149.51 132.799 147.927 131.822 146.95Z" fill="#0A3474" stroke="#0A3474" stroke-width="2.5" />
+                    <path d="M156.822 145.95C155.846 144.974 154.263 144.974 153.287 145.95C152.311 146.927 152.311 148.51 153.287 149.486C154.263 150.462 155.846 150.462 156.822 149.486C157.799 148.51 157.799 146.927 156.822 145.95Z" fill="#0A3474" stroke="#0A3474" stroke-width="2" vector-effect="non-scaling-stroke"/>
+                    <path d="M131.822 146.95C130.846 145.974 129.263 145.974 128.287 146.95C127.311 147.927 127.311 149.51 128.287 150.486C129.263 151.462 130.846 151.462 131.822 150.486C132.799 149.51 132.799 147.927 131.822 146.95Z" fill="#0A3474" stroke="#0A3474" stroke-width="2" vector-effect="non-scaling-stroke"/>
                     <path d="M179.555 154.718V162.218" stroke="#DF8D99" stroke-width="4" stroke-linecap="round"/>
                     <path d="M107.555 154.218V161.718" stroke="#DF8D99" stroke-width="4" stroke-linecap="round"/>
                     <path d="M186.055 155.218L187.555 162.218" stroke="#DF8D99" stroke-width="4" stroke-linecap="round"/>
@@ -151,11 +151,11 @@
     .tank-grid {
         position: absolute;
         /* height: calc(90vh - min(10vw, 10vh)); */
-        inset: min(5vw, 5vh);
+        inset: min(10vw, 10vh) min(5vw, 5vh);
         z-index: 2;
         display: grid;
         gap: 1rem;
-        grid-template-columns: 2.5fr 2fr 2fr 1.5fr;
+        grid-template-columns: 2fr 2fr 2fr 1.5fr;
         grid-template-rows: auto repeat(2, 1fr) auto;
         grid-template-areas:
             "H A A A"
@@ -176,14 +176,21 @@
                 "F G";
         }
         .squiddo-wrapper {
+            height: 100%;
+            position: relative;
             display: flex;
             flex-direction: row-reverse !important;
             align-items: flex-start !important;
-            gap: 0 !important;
+            gap: 1vw !important;
             animation: float 4s ease-in-out alternate infinite !important;
         }
         .squiddo svg {
             max-height: 18vh;
+        }
+        .text-bubble {
+            max-height: 100% !important;
+            aspect-ratio: none;
+            width: 100% !important;
         }
     }
 
@@ -194,8 +201,16 @@
         padding: min(2vw, 2vh);
     }
 
+    .tank-grid > * > h4 {
+        font-size: clamp(1.094rem, 0.865rem + 1.15vi, 1.67rem);
+        text-decoration: underline; 
+        font-family: 'Instrument Sans', sans-serif;
+    }
+
     .mood { 
         grid-area: A; 
+        font-size: clamp(2rem, min(8vw, 8vh), 4rem);
+        line-height: 0.67;
     }
 
     .pomodoro { 
@@ -215,9 +230,16 @@
         transparent 30%);
     }
 
+    .zone h3 {
+        font-size: clamp(1.368rem, 1.015rem + 1.76vi, 2.227rem);
+        /* font-size: clamp(1.709rem, 1.181rem + 2.64vi, 2.969rem); */
+        line-height: 0.75;
+    }
+
     .badges { 
         grid-area: E; 
         background-color: color-mix(in srgb, var(--navy), transparent 95%);
+        font-size: clamp(0.875rem, 0.741rem + 0.67vi, 1.25rem);
     }
 
     .edit {
@@ -247,9 +269,12 @@
         position: absolute;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         gap: max(1rem, 3vw);
         animation: float 10s ease-in-out alternate infinite;
+        max-height: 100%;
+        /* height: fit-content; */
     }
 
     @keyframes float {
@@ -267,6 +292,8 @@
         position: relative;
         display: block;
         max-width: 100%;
+        flex: 1 1 auto;
+        min-height: 2rem;
     }
 
     .text-bubble {
@@ -277,7 +304,7 @@
         text-align: center;
         font-size: clamp(0.75rem, 1.5vw, 1rem);
         line-height: 1;
-        width: 100%;
+        width: auto;
         padding: 5%;
         aspect-ratio: 1.5;
         max-height: 50%;
