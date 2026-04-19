@@ -15,8 +15,9 @@
         <div class="edit friend-settings">Edit friends</div>
         <div class="edit squiddo-settings">Edit squiddo</div>
         <div class="squiddo">
-            <div class="text-bubble">
-                <p>jfdksjfsd dfds dsfsd dfsd dsf sdffsd</p>
+            <div class="squiddo-wrapper">
+                <div class="text-bubble">jfdksjfsd dfds dsfsd dfsd dsf sdffsd</div>
+                <img src="/images/happy-squiddo.png" alt=""/>
             </div>
         </div>
     </div>
@@ -102,8 +103,6 @@
         height: var(--thick);
         background: var(--navy);
         border-radius: 999px;
-
-
         box-shadow: 
             calc(calc(90vw + var(--thick)) - var(--len)) 0 0 0 var(--navy),
             0 calc(calc(90vh + var(--thick)) - var(--thick)) 0 0 var(--navy),
@@ -128,6 +127,7 @@
 
     .tank-grid {
         position: absolute;
+        /* height: calc(90vh - min(10vw, 10vh)); */
         inset: min(5vw, 5vh);
         z-index: 2;
         display: grid;
@@ -152,7 +152,16 @@
                 "H E"
                 "F G";
         }
-        /* add squid logic changing here too */
+        .squiddo-wrapper {
+            display: flex;
+            flex-direction: row-reverse !important;
+            align-items: flex-start !important;
+            gap: 0 !important;
+            animation: float 4s ease-in-out alternate infinite !important;
+        }
+        .squiddo img {
+            max-height: 18vh;
+        }
     }
 
     .tank-grid > *:not(:first-child) {
@@ -204,6 +213,34 @@
 
     .squiddo { 
         grid-area: H; 
+        border: none !important;
+        position: relative;
+    }
+
+    .squiddo-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+        animation: float 10s ease-in-out alternate infinite;
+    }
+
+    @keyframes float {
+        0% {
+            top: 0;
+            transform: translateY(0);
+        }
+        100% {
+            top: 100%;
+            transform: translateY(-100%);
+        }
+    }
+
+    .squiddo img {
+        position: relative;
+        display: block;
+        max-width: 100%;
     }
 
     .text-bubble {
@@ -235,6 +272,6 @@
         border-left: 3px solid var(--navy);
         border-right: 3px solid var(--navy);
         border-bottom: 3px solid var(--navy);
-        transform: rotate(4deg) translateY(-0.5px);
+        /* transform: rotate(4deg) translateY(-0.5px); */
     }
 </style>
