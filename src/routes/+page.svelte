@@ -14,6 +14,11 @@
         <div class="badges">Badges</div>
         <div class="edit friend-settings">Edit friends</div>
         <div class="edit squiddo-settings">Edit squiddo</div>
+        <div class="squiddo">
+            <div class="text-bubble">
+                <p>jfdksjfsd dfds dsfsd dfsd dsf sdffsd</p>
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -124,29 +129,27 @@
     .tank-grid {
         position: absolute;
         inset: min(5vw, 5vh);
-        left: 30%;
         z-index: 2;
         display: grid;
         gap: 1rem;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 2.5fr 2fr 2fr 1.5fr;
         grid-template-rows: auto repeat(2, 1fr) auto;
         grid-template-areas:
-            "A A A"
-            "B C D"
-            "E E D"
-            "F G D";
+            "H A A A"
+            "H B C D"
+            "H E E D"
+            "H F G D";
     }
 
     @media (max-width: 834px) {
         .tank-grid {
-            inset: min(5vw, 5vh) !important;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto repeat(3, 1fr) auto;
             grid-template-areas:
                 "A A"
                 "B D"
                 "C D"
-                "E E"
+                "H E"
                 "F G";
         }
         /* add squid logic changing here too */
@@ -197,5 +200,41 @@
 
     .squiddo-settings { 
         grid-area: G; 
+    }
+
+    .squiddo { 
+        grid-area: H; 
+    }
+
+    .text-bubble {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: clamp(0.75rem, 1.5vw, 1rem);
+        line-height: 1;
+        width: 50%;
+        aspect-ratio: 1.5;
+        max-height: 50%;
+        border-radius: 30% / 45%;
+        background-color: var(--cream);
+        border: 3px solid var(--navy);
+        overflow: visible;
+    }
+
+    .text-bubble::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 10%;
+        height: 20%;
+        background-color: var(--cream);
+        border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        border-left: 3px solid var(--navy);
+        border-right: 3px solid var(--navy);
+        border-bottom: 3px solid var(--navy);
+        transform: rotate(4deg) translateY(-0.5px);
     }
 </style>
