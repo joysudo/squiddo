@@ -4,6 +4,12 @@ html {
     --outer-radius: 1vw;
     --padding: 2vw;
     --inner-radius: calc(var(--outer-radius) - var(--padding));
+    --navy: #0A3474;
+    --cream: #F8F5E9;
+    --sand: #F9EABF;
+    --sky: #C2E8F3;
+    --lavender: #928DDF;
+    color: var(--navy);
 }
 
 
@@ -46,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal;
 }
 
-p {
+p, div {
     font-family: "Instrument Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;

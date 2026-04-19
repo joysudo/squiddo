@@ -2,22 +2,27 @@
     import "../app.css";
 </script>
 
-<div class="frame">
+<div class="tank-wrapper">
 <div class="tank">
     <div class="tank-back"></div>
     <div class="sand"></div>
+    <div class="tank-grid">
+        <h1 class="mood">Squid name is feeling... <i>emotion</i>.</h1>
+        <div class="pomodoro">Pomodoro</div>
+        <div class="tasks">Tasks</div>
+        <div class="zone">Zone</div>
+        <div class="badges">Badges</div>
+        <div class="edit friend-settings">Edit friends</div>
+        <div class="edit squiddo-settings">Edit squiddo</div>
+    </div>
 </div>
 </div>
 
 <style lang="css">
     :root {
+        /* tank borders */
         --thick: min(3vw, 3vh);
-        --len: min(10vw, 10vh);
-        --navy: #0A3474;
-        --cream: #F8F5E9;
-        --sand: #F9EABF;
-        --sky: #C2E8F3;
-        --lavender: #928DDF;
+        --len: min(7vw, 7vh);
     }
 
     .tank {
@@ -49,6 +54,7 @@
     }
 
     .tank-back {
+        z-index: 1;
         width: 72%;
         height: 100%;
         margin: auto;
@@ -70,47 +76,126 @@
         border-top: 4px solid var(--navy);
     }
 
-.frame {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    z-index: 50;
-    width: calc(90vw + var(--thick));
-    height: calc(90vh + var(--thick));
-    margin: auto;
-}
+    .tank-wrapper {
+        /* this is just for the borders bc actual tank has overflow hidden */
+        position: relative;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        z-index: 50;
+        width: calc(90vw + var(--thick));
+        height: calc(90vh + var(--thick));
+        margin: auto;
+    }
 
-.frame::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--len); 
-    height: var(--thick);
-    background: var(--navy);
-    border-radius: 999px;
+    .tank-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--len); 
+        height: var(--thick);
+        background: var(--navy);
+        border-radius: 999px;
 
 
-    box-shadow: 
-        calc(calc(90vw + var(--thick)) - var(--len)) 0 0 0 var(--navy),
-        0 calc(calc(90vh + var(--thick)) - var(--thick)) 0 0 var(--navy),
-        calc(calc(90vw + var(--thick)) - var(--len)) calc(calc(90vh + var(--thick)) - var(--thick)) 0 0 var(--navy);
-    z-index: 20;
-}
+        box-shadow: 
+            calc(calc(90vw + var(--thick)) - var(--len)) 0 0 0 var(--navy),
+            0 calc(calc(90vh + var(--thick)) - var(--thick)) 0 0 var(--navy),
+            calc(calc(90vw + var(--thick)) - var(--len)) calc(calc(90vh + var(--thick)) - var(--thick)) 0 0 var(--navy);
+        z-index: 20;
+    }
 
-.frame::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--thick);
-    height: var(--len);
-    background: var(--navy);
-    border-radius: 999px;
-    box-shadow: 
-        calc(calc(90vw + var(--thick)) - var(--thick)) 0 0 0 var(--navy), /* top right */
-        0 calc(calc(90vh + var(--thick)) - var(--len)) 0 0 var(--navy), /* bottom left */
-        calc(calc(90vw + var(--thick)) - var(--thick)) calc(calc(90vh + var(--thick)) - var(--len)) 0 0 var(--navy); /* bottom right */
-}
+    .tank-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--thick);
+        height: var(--len);
+        background: var(--navy);
+        border-radius: 999px;
+        box-shadow: 
+            calc(calc(90vw + var(--thick)) - var(--thick)) 0 0 0 var(--navy), /* top right */
+            0 calc(calc(90vh + var(--thick)) - var(--len)) 0 0 var(--navy), /* bottom left */
+            calc(calc(90vw + var(--thick)) - var(--thick)) calc(calc(90vh + var(--thick)) - var(--len)) 0 0 var(--navy); /* bottom right */
+    }
+
+    .tank-grid {
+        position: absolute;
+        inset: min(5vw, 5vh);
+        left: 30%;
+        z-index: 2;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto repeat(2, 1fr) auto;
+        grid-template-areas:
+            "A A A"
+            "B C D"
+            "E E D"
+            "F G D";
+    }
+
+    @media (max-width: 834px) {
+        .tank-grid {
+            inset: min(5vw, 5vh) !important;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto repeat(3, 1fr) auto;
+            grid-template-areas:
+                "A A"
+                "B D"
+                "C D"
+                "E E"
+                "F G";
+        }
+        /* add squid logic changing here too */
+    }
+
+    .tank-grid > *:not(:first-child) {
+        /* opacity: 0.2; */
+        border: 3px solid var(--navy);
+        border-radius: 15px;
+        padding: min(2vw, 2vh);
+    }
+
+    .mood { 
+        grid-area: A; 
+    }
+
+    .pomodoro { 
+        grid-area: B; 
+        background-color: color-mix(in srgb, var(--sand), transparent 30%);
+    }
+
+    .tasks { 
+        grid-area: C; 
+        background-color: color-mix(in srgb, var(--lavender), transparent 30%);
+    }
+
+    .zone { 
+        grid-area: D; 
+        background-color: color-mix(in srgb, 
+            color-mix(in srgb, var(--navy), var(--cream) 60%), 
+        transparent 30%);
+    }
+
+    .badges { 
+        grid-area: E; 
+        background-color: color-mix(in srgb, var(--sky), transparent 30%);
+    }
+
+    .edit {
+        background-color: color-mix(in srgb, 
+            color-mix(in srgb, var(--navy), var(--cream)), 
+        transparent 30%);
+    }
+    
+    .friend-settings { 
+        grid-area: F; 
+    }
+
+    .squiddo-settings { 
+        grid-area: G; 
+    }
 </style>
