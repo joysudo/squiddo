@@ -5,6 +5,46 @@
     let zone: string = "Twilight";
     let timer: `${number}:${number}` = "25:00";
     let tasks = $state(["task 1", "task 2", "task 3"])
+    interface Badge {
+        name: string;
+        description: string;
+        unlocked: boolean;
+        img: string; // put src here
+        alt: string;
+    }
+    let badges: Badge[] = [
+        { 
+            name: "Badge 1",
+            description: "Complete your first pomodoro",
+            unlocked: false,
+            img: "https://www.harmonyanimalhospital.net/wp-content/uploads/2018/08/senior-cat-stage.png", 
+            alt: ""
+        }, { 
+            name: "Badge 2",
+            description: "Track five coding hours",
+            unlocked: false,
+            img: "https://www.harmonyanimalhospital.net/wp-content/uploads/2018/08/senior-cat-stage.png", 
+            alt: ""
+        }, { 
+            name: "Badge 3",
+            description: "Track your first hour of art",
+            unlocked: false,
+            img: "https://www.harmonyanimalhospital.net/wp-content/uploads/2018/08/senior-cat-stage.png", 
+            alt: ""
+        }, { 
+            name: "Badge 4",
+            description: "Ship your first project",
+            unlocked: false,
+            img: "https://www.harmonyanimalhospital.net/wp-content/uploads/2018/08/senior-cat-stage.png", 
+            alt: ""
+        }, { 
+            name: "Badge 5",
+            description: "Post your first blot",
+            unlocked: false,
+            img: "https://www.harmonyanimalhospital.net/wp-content/uploads/2018/08/senior-cat-stage.png", 
+            alt: ""
+        }
+    ]
     let tasksLoaded = false;
     $effect(() => {
         const saved = localStorage.getItem("tasks");
@@ -39,9 +79,22 @@
             {/each}
         </div>
         <div class="zone"><h3>{zone}<br/><u><i>Zone</i></u></h3></div>
-        <div class="badges"><h4>Badges</h4></div>
-        <div class="edit friend-settings"><h4>Edit friends</h4></div>
-        <div class="edit squiddo-settings"><h4>Edit squiddo</h4></div>
+        <div class="badges">
+            <h4>Badges</h4>
+            {#each badges as badge}
+                <button class={badge.unlocked ? 'unlocked' : 'locked'}>
+                    <div class="badge-wrapper">
+                        <img src={badge.img} alt={badge.alt}/>
+                        <div>
+                            <p class="badge-title">{badge.name}</p>
+                            <p class="badge-description">{badge.description}</p>
+                        </div>
+                    </div>
+                </button>
+            {/each}
+        </div>
+        <div class="edit friend-settings">Edit friends</div>
+        <div class="edit squiddo-settings">Edit squiddo</div>
         <div class="squiddo">
             <div class="squiddo-wrapper">
                 <div class="text-bubble">jfdksjfsd dfds dsfsd dfsd dsf sdffsd</div>
@@ -346,7 +399,53 @@
         background-color: color-mix(in srgb, 
             color-mix(in srgb, var(--navy), var(--sky) 75%), 
         transparent 50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .badge-wrapper {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .badge-title {
         font-size: clamp(0.875rem, 0.741rem + 0.67vi, 1.25rem);
+    }
+
+    .badges {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem;
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+    }
+
+    .badges button {
+        background-color: color-mix(in srgb, var(--navy), transparent 93%);
+        height: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: left;
+        padding: 1%;
+    }
+
+    .badges button img {
+        height: calc(1.5 * clamp(0.875rem, 0.741rem + 0.67vi, 1.25rem));
+    }
+
+    .badges button:hover {
+        transition: background-color 0.2s ease;
+    }
+
+    .badges button:hover {
+        background-color: color-mix(in srgb, var(--navy), transparent 85%);
+    }
+
+    .badges button:active {
+        background-color: color-mix(in srgb, var(--navy), transparent 80%);
     }
 
     .edit {
@@ -354,6 +453,8 @@
             color-mix(in srgb, var(--navy), var(--cream)), 
         transparent 30%);
         font-size: clamp(0.875rem, 0.741rem + 0.67vi, 1.25rem);
+        text-decoration: underline;
+        padding: min(1.5vw, 1.5vh) min(2vw, 2vh) !important;
     }
     
     .friend-settings { 
