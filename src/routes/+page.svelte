@@ -4,12 +4,24 @@
     let emotion: string = "emotion";
     let zone: string = "Twilight";
     let timer: `${number}:${number}` = "25:00";
+    let tasks = $state(["task 1", "task 2", "task 3"])
+    let tasksLoaded = false;
+    $effect(() => {
+        const saved = localStorage.getItem("tasks");
+        if (saved) { tasks = JSON.parse(saved); }
+        tasksLoaded = true;
+    });
+    $effect(() => {
+        if (tasksLoaded) { localStorage.setItem("tasks", JSON.stringify(tasks)); }
+    })
+
 </script>
 
 <div class="tank-wrapper">
 <div class="tank">
     <div class="tank-back"></div>
     <div class="sand"></div>
+    <div class="sand-bottom"></div>
     <div class="tank-grid">
         <h1 class="mood">{squiddo_name} is feeling... <i>{emotion}</i>.</h1>
         <div class="pomodoro">
@@ -20,7 +32,12 @@
                 <button>↻</button>
             </div>
         </div>
-        <div class="tasks"><h4>Tasks</h4></div>
+        <div class="tasks">
+            <h4>Tasks</h4>
+            {#each tasks as task, i}
+                <button onclick={() => tasks.splice(i, 1)}>{task}</button>
+            {/each}
+        </div>
         <div class="zone"><h3>{zone}<br/><u><i>Zone</i></u></h3></div>
         <div class="badges"><h4>Badges</h4></div>
         <div class="edit friend-settings"><h4>Edit friends</h4></div>
@@ -112,16 +129,25 @@
 
     .sand {
         position: absolute;
-        bottom: 0;
+        bottom: 3%;
         width: 100%;
         height: 20%;
-        background-color: antiquewhite;
+        background-color: var(--cream);
         border-radius: 15px 15px 0 0;
         transform: perspective(10rem) rotateX(20deg);
         transform-origin: bottom;
         border-left: 4px solid var(--navy);
         border-right: 4px solid var(--navy);
         border-top: 4px solid var(--navy);
+    }
+
+    .sand-bottom {
+        position: absolute;
+        width: 100%;
+        height: 3%;
+        bottom: 0;
+        border-top: 3px solid var(--navy);
+        background-color: var(--sand);
     }
 
     .tank-wrapper {
@@ -283,10 +309,23 @@
         background-color: color-mix(in srgb, var(--navy), transparent 80%);
     }
 
-
     .tasks { 
         grid-area: C; 
         background-color: color-mix(in srgb, var(--lavender), transparent 30%);
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        /* overflow-x: hidden; */
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+    }
+
+    .tasks button {
+        height: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: left;
     }
 
     .zone { 
